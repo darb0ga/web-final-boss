@@ -9,9 +9,6 @@ import Header from "@/components/header.vue";
   <footer>
     <div>
       <nav>
-        <RouterLink to="/main">Home</RouterLink>
-      </nav>
-      <nav>
         <RouterLink to="/">login</RouterLink>
       </nav>
     </div>

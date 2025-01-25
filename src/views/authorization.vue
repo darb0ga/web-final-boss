@@ -57,8 +57,9 @@ export default {
       loginApi(
           {login: this.login, password: this.password},
           (data) => {
-            console.log(data.token)
-            localStorage.setItem("jwt", data.token);
+            sessionStorage.setItem("jwt", data.token);
+
+            console.log(data.token);
             this.$router.push({name: 'main'});
           }, (error) => {
             console.log(error);
@@ -72,7 +73,7 @@ export default {
       registerApi(
           {login: this.login, password: this.password},
           (data) => {
-              console.log(data.token);
+            console.log(data.token);
           }, (err) => {
             console.log("pechal");
             console.log(err);
@@ -97,7 +98,7 @@ export default {
 #buttons{
   width: 100%;
   border: #100505;
-  height: 35px;
+  height: 40%;
 }
 button{
   width: 50%;
@@ -107,4 +108,38 @@ button{
   align-content: center;
   width: 100%;
 }
+
+/* Десктопный режим (>= 1258px) */
+@media (min-width: 1258px) {
+  body {
+    font-size: 16px;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+/* Планшетный режим (891px - 1258px) */
+@media (min-width: 891px) and (max-width: 1257px) {
+  body {
+    font-size: 14px;
+  }
+  .container {
+    max-width: 800px;
+    padding: 0 20px;
+  }
+}
+
+/* Мобильный режим (< 891px) */
+@media (max-width: 890px) {
+  body {
+    font-size: 12px;
+  }
+  .container {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}
+
 </style>

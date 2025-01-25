@@ -11,8 +11,8 @@ const router = createRouter({
             name: 'login',
             component: authorization,
             beforeEnter: (to, from, next) => {
-                console.log(localStorage.getItem("jwt"));
-                (localStorage.getItem("jwt") !== null)
+                console.log(sessionStorage.getItem("jwt"));
+                (sessionStorage.getItem("jwt") !== null)
                     ? next({name: 'main'})
                     : next({name: 'register'});
             }
@@ -22,7 +22,7 @@ const router = createRouter({
             name: 'register',
             component: authorization,
             beforeEnter: (to, from, next) => {
-                (localStorage.getItem("jwt") !== null) ? next({name: 'main'}) : next();
+                (sessionStorage.getItem("jwt") !== null) ? next({name: 'main'}) : next();
             }
         },
         {
@@ -30,7 +30,7 @@ const router = createRouter({
             name: 'main',
             component: main,
             beforeEnter: (to, from, next) => {
-                (localStorage.getItem("jwt") !== null) ? next() : next({ name: 'login'});
+                (sessionStorage.getItem("jwt") !== null) ? next() : next({ name: 'login'});
             }
         },
     ],
